@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Observable, Subscription } from 'rxjs';
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
+import { WebLinksAddon } from 'xterm-addon-web-links';
 
 require('./logs-viewer.scss');
 
@@ -18,6 +19,7 @@ export interface LogsViewerProps {
 export class LogsViewer extends React.Component<LogsViewerProps> {
     private terminal: Terminal;
     private fitAddon: FitAddon;
+    private webLinksAddon: WebLinksAddon;
     private subscription: Subscription | null = null;
 
     constructor(props: LogsViewerProps) {
@@ -32,6 +34,7 @@ export class LogsViewer extends React.Component<LogsViewerProps> {
 
     public initTerminal(container: HTMLElement) {
         this.fitAddon = new FitAddon();
+        this.webLinksAddon = new WebLinksAddon();
         this.terminal = new Terminal({
             scrollback: 99999,
             allowTransparency: true,
@@ -41,6 +44,7 @@ export class LogsViewer extends React.Component<LogsViewerProps> {
             },
         });
         this.terminal.loadAddon(this.fitAddon);
+        this.terminal.loadAddon(this.webLinksAddon);
         this.terminal.open(container);
         this.fitAddon.fit();
     }
