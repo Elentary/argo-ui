@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Observable, Subscription } from 'rxjs';
-import { fit } from 'xterm/lib/addons/fit/fit';
-import { Terminal } from 'xterm';
+const Terminal = require('xterm');
+Terminal.loadAddon('fit');
 
 // Terminal.applyAddon(fit);
 
@@ -38,7 +38,7 @@ export class LogsViewer extends React.Component<LogsViewerProps> {
         });
 
         this.terminal.open(container);
-        fit(this.terminal);
+        this.terminal.fit();
     }
 
     public componentDidMount() {
