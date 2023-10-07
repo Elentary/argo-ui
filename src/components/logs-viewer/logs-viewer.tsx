@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { fit } from 'xterm/lib/addons/fit/fit';
 import { Terminal } from 'xterm';
 
-Terminal.applyAddon(fit);
+// Terminal.applyAddon(fit);
 
 require('./logs-viewer.scss');
 
