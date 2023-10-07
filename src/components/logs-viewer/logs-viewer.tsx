@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Observable, Subscription } from 'rxjs';
+
 const Terminal = require('xterm');
 Terminal.loadAddon('fit');
-
-// Terminal.applyAddon(fit);
 
 require('./logs-viewer.scss');
 
@@ -61,7 +60,8 @@ export class LogsViewer extends React.Component<LogsViewerProps> {
         return false;
     }
 
-    private refresh(source: LogsSource) {    
+    private refresh(source: LogsSource) {
+        this.terminal.reset();
         this.ensureUnsubscribed();
         const onLoadComplete = () => {
             if (source.shouldRepeat()) {
