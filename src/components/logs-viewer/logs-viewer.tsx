@@ -44,7 +44,7 @@ export class LogsViewer extends React.Component<LogsViewerProps> {
             },
         });
         this.terminal.loadAddon(this.fitAddon);
-        this.terminal.loadAddon(this.webLinksAddon);
+        // this.terminal.loadAddon(this.webLinksAddon);
         this.terminal.open(container);
         this.fitAddon.fit();
     }
